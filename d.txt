@@ -1,0 +1,38 @@
+
+
+#============= fsck ==============
+allow fsck block_device:blk_file { ioctl open read write };
+
+#============= hal_sensors_default ==============
+allow hal_sensors_default vendor_default_prop:property_service set;
+
+#============= init ==============
+allow init debugfs:dir mounton;
+
+#============= mediaprovider ==============
+allow mediaprovider tmpfs:file { getattr setattr };
+
+#============= qti_init_shell ==============
+allow qti_init_shell self:capability dac_override;
+
+#============= radio ==============
+allow radio vendor_file:file { execute getattr open read };
+
+#============= rild ==============
+allow rild qcom_ims_prop:file { getattr open read };
+
+#============= sysinit ==============
+allow sysinit shell_exec:file { execute getattr read };
+allow sysinit system_file:dir { open read };
+
+#============= system_server ==============
+allow system_server sysfs:file { getattr open read };
+
+#============= vendor_init ==============
+allow vendor_init media_rw_data_file:dir setattr;
+allow vendor_init seemp_data_file:dir setattr;
+allow vendor_init system_data_file:dir setattr;
+allow vendor_init tombstone_data_file:dir setattr;
+
+#============= webview_zygote ==============
+allow webview_zygote zygote:unix_dgram_socket write;
